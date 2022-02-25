@@ -17,7 +17,8 @@ export class SignupComponent implements OnInit {
     is_Manager: false,
     is_Recruiter: false,
     is_Applicant: false,
-    profile_pic:''
+    profile_pic:'',
+    
   }
   querySub:any;
   roles = 
@@ -49,9 +50,10 @@ export class SignupComponent implements OnInit {
     else if (this.role == "applicant")
     {
       this.userInfo.is_Applicant = true;
+
     }
     console.log(this.userInfo);
-    this.data.register_app_form(this.userInfo).subscribe(info=>{
+   this.data.register_app_form(this.userInfo).subscribe(info=>{
       console.log("signup test");
         console.log(info);
         if(info.email_address==this.userInfo.email_address){

@@ -1,6 +1,8 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SubmitAppService } from 'src/app/services/submit-app.service';
+import jwt_decode from 'jwt-decode'
+
 
 
 @Component({
@@ -25,13 +27,31 @@ querySub:any;
     console.log(this.UserLogin);
     this.querySub=this.data.submit_app_form(this.UserLogin).subscribe((info)=>{
       console.log("login test");
-      if(info=="logged in")
+      let user=jwt_decode(info.LoggedIn_Tokken);
+      console.log(user);
+      if(user)
       {
-        console.log("login test2");
-        //bring the users to the new page
-        this.data.email_address=this.UserLogin.email_address;
-        this.router.navigate(['/home']);
+      if(user['is_Applicant']){
+this.data.role='applicant';
       }
+      if(user['is_Manager']){
+        this.data.role='manager';
+      }
+      if(user['is_Recruiter']){
+        this.data.role='recruiter';
+      }
+      console.log("the user has logged in");
+      //bring the users to the new page
+        this.data.userId=user['_id'];
+        
+        console.log('this userid'+this.data.userId);
+        this.data.email_address=this.UserLogin.email_address;
+        this.data.company_id=user['company_id'];
+        this.data.profile_id=user['profile_id'];
+        
+        this.router.navigate(['/home']);
+    }
+     
         
       
      

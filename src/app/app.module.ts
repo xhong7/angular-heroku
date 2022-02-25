@@ -16,6 +16,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ProfileformComponent } from './components/profileform/profileform.component';
+import { CompanyformComponent } from './components/companyform/companyform.component';
+import { CompanypageComponent } from './components/companypage/companypage.component';
+import { ProfilepageComponent } from './components/profilepage/profilepage.component';
+import { ResumeformComponent } from './components/resumeform/resumeform.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { MatInputModule } from '@angular/material/input';
     Contentsection1Component,
     FooterComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ProfileformComponent,
+    CompanyformComponent,
+    CompanypageComponent,
+    ProfilepageComponent,
+    ResumeformComponent
   ],
   imports: [
     BrowserModule,
